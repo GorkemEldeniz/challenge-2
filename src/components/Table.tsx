@@ -35,17 +35,6 @@ function createTable (colN: number, rowN: number): cells[][] {
   }
   return tableAr
 }
-/* update table methodu yaz daha advance bir sekilde yazılabilir! dry code u önlemek icin */
-const updateTable = (table: cells[][], rowN: number, colN: number): cells[][] => {
-  return table.map((ROW, rowI) => {
-    return ROW.map((COL, colI) => {
-      if (rowI === rowN && colI === colN) {
-        COL.isMatched = true
-      }
-      return COL
-    })
-  })
-}
 
 const Table: React.FC = () => {
   const ROW = 4
@@ -55,33 +44,29 @@ const Table: React.FC = () => {
 
   const checkTheMatch = (): void => {
     const [firstItem, secondItem] = check
-    if (firstItem.name === secondItem.name) {
-      /* win condition!! */
-      console.log('buldun')
-      check.forEach(item => {
-        const updatedTable = updateTable(table, item.row, item.col)
-        setTable(updatedTable)
+    const updatedTable = table.map((ROW, rowI) => {
+      return ROW.map((COL, colI) => {
+        if (rowI === firstItem.row && colI === firstItem.col) {
+          if (firstItem.name === secondItem.name) {
+            COL.isMatched = true
+          } else COL.isOpen = false
+        }
+        if (rowI === secondItem.row && colI === secondItem.col) {
+          if (firstItem.name === secondItem.name) {
+            COL.isMatched = true
+          } else COL.isOpen = false
+        }
+        return COL
       })
-    } else {
-      const updatedTable = table.map((ROW, rowI) => {
-        return ROW.map((COL, colI) => {
-          if (rowI === firstItem.row && colI === firstItem.col) {
-            COL.isOpen = false
-          }
-          if (rowI === secondItem.row && colI === secondItem.col) {
-            COL.isOpen = false
-          }
-          return COL
-        })
-      })
-      setTable(updatedTable)
-      /* lose condition! */
-    }
+    })
+    setTable(updatedTable)
+    /* lose condition! */
     setCheck([])
   }
 
   const handleClick = (row: number, col: number): void => {
     if (table[row][col].isMatched) return
+    if (table[row][col].isOpen) return
     if (check.length === 2) checkTheMatch()
     else {
       const updatedTable = table.map((ROW, rowI) => {
