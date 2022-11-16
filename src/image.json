@@ -1,0 +1,66 @@
+{
+  "path" : [
+    {
+      "src" : "../src/images/buzdolabı.png",
+      "name" : "buzdolabı"
+    },
+    {
+      "src" : "../src/images/buzdolabı2.png",
+      "name" : "buzdolabı"
+    },
+    {
+      "src" : "../src/images/caydanlık.png",
+      "name" : "caydanlık"
+    },
+    {
+      "src" : "../src/images/caydanlık2.png",
+      "name" : "caydanlık"
+    },
+    {
+      "src" : "../src/images/kalem.png",
+      "name" : "kalem"
+    },
+    {
+      "src" : "../src/images/kalem2.png",
+      "name":"kalem"
+    },
+    {
+      "src" : "../src/images/kılıç.png",
+      "name":"kılıç"
+    },
+    {
+      "src" : "../src/images/kılıç2.png",
+      "name":"kılıç"
+    },    {
+      "src" : "../src/images/koltuk.png",
+      "name":"koltuk"
+    },
+    {
+      "src" : "../src/images/koltuk2.png",
+      "name":"koltuk"
+    },
+    {
+      "src" : "../src/images/kova.png",
+      "name":"kova"
+    },
+    {
+      "src" : "../src/images/kova2.png",
+      "name":"kova"
+    },
+    {
+      "src" : "../src/images/pervane.png",
+      "name":"pervane"
+    },    {
+      "src" : "../src/images/pervane2.png",
+      "name":"pervane"
+    },
+    {
+      "src" : "../src/images/tencere.png",
+      "name":"tencere"
+    },
+    {
+      "src" : "../src/images/tencere2.png",
+      "name":"tencere"
+    }
+  ]
+}
