@@ -35,6 +35,17 @@ function createTable (colN: number, rowN: number): cells[][] {
   }
   return tableAr
 }
+/* update table methodu yaz daha advance bir sekilde yazılabilir! dry code u önlemek icin */
+const updateTable = (table: cells[][], rowN: number, colN: number): cells[][] => {
+  return table.map((ROW, rowI) => {
+    return ROW.map((COL, colI) => {
+      if (rowI === rowN && colI === colN) {
+        COL.isMatched = true
+      }
+      return COL
+    })
+  })
+}
 
 const Table: React.FC = () => {
   const ROW = 4
@@ -42,25 +53,15 @@ const Table: React.FC = () => {
   const [table, setTable] = useState(() => createTable(COL, ROW))
   const [check, setCheck] = useState<check[]>([])
 
-  /* update table methodu yaz */
-
   const checkTheMatch = (): void => {
     const [firstItem, secondItem] = check
     if (firstItem.name === secondItem.name) {
       /* win condition!! */
       console.log('buldun')
-      const updatedTable = table.map((ROW, rowI) => {
-        return ROW.map((COL, colI) => {
-          if (rowI === firstItem.row && colI === firstItem.col) {
-            COL.isMatched = true
-          }
-          if (rowI === secondItem.row && colI === secondItem.col) {
-            COL.isMatched = true
-          }
-          return COL
-        })
+      check.forEach(item => {
+        const updatedTable = updateTable(table, item.row, item.col)
+        setTable(updatedTable)
       })
-      setTable(updatedTable)
     } else {
       const updatedTable = table.map((ROW, rowI) => {
         return ROW.map((COL, colI) => {
